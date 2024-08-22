@@ -1,0 +1,21 @@
+#status-notification {
+    position: absolute;
+    z-index: 1;
+    height: 5%;
+    width: auto;
+    background-color: black;
+    border-radius: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 0 10px;
+}
+
+#message{
+    font-size: small;
+}
