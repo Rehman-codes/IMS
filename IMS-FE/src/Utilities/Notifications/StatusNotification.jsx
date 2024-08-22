@@ -1,7 +1,10 @@
 import './statusNotification.css';
+import { StatusContext } from '../../Context/StatusContext';
+import { useContext } from 'react';
 
-function StatusNotification(props) {
-    const { actionStatus, statusMessage } = props;
+function StatusNotification() {
+
+    const { actionStatus, statusMessage } = useContext(StatusContext);
 
     return (
         <>
