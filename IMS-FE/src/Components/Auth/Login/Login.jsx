@@ -12,18 +12,18 @@ function Login() {
 
                         <div>
                             <label htmlFor="username">User name</label>
-                            <input id="username" name="username" type="text" />
+                            <input id="username" name="username" type="text" required/>
                         </div>
 
                         <div>
                             <label htmlFor="password">Password</label>
-                            <input id="password" name="password" type="password" />
+                            <input id="password" name="password" type="password" required minLength={5}/>
                         </div>
 
                         <div>
                             <button type="submit">Login</button>
                         </div>
-                        
+
                     </fieldset>
                 </form>
 

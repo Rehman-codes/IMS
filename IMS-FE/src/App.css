@@ -1,13 +1,13 @@
 *{
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Montserrat, Verdana, Geneva, Tahoma, sans-serif;
   box-sizing: border-box;
 }
 
 html,body,#root{
   height: 100vh;
   width: 100vw;
-  background-color: rgb(239, 239, 239);
+  background-color: rgb(255, 255, 255);
 }
 
 #root{
@@ -15,3 +15,14 @@ html,body,#root{
   align-items: center;
   justify-content: center;
 }
+
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+.montserrat-<uniquifier> {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
