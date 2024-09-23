@@ -20,7 +20,7 @@ function Login() {
         e.preventDefault();
         console.log("Form submitted with", { username, password });
 
-        fetch('http://localhost:5035/login', {
+        fetch('http://localhost:5035/api/auth/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,12 +44,12 @@ function Login() {
             });
 
 
-            fetch('http://localhost:5035/', {
-                method: 'GET',
-            })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            // fetch('http://localhost:5035/', {
+            //     method: 'GET',
+            // })
+            // .then(response => response.text())
+            // .then(data => console.log(data))
+            // .catch(error => console.error('Error:', error));
             
     }
 

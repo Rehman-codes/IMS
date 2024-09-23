@@ -4111,11 +4111,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Work\\8 Bits\\8 Bits Solutions\\Ongoing-Projects\\IMS\\IMS-BE\\IMS-BE.csproj",
+      "projectUniqueName": "E:\\Freelance\\Origin360\\Origin360---Solutions\\Ongoing\\IMS\\IMS-BE\\IMS-BE.csproj",
       "projectName": "IMS-BE",
-      "projectPath": "E:\\Work\\8 Bits\\8 Bits Solutions\\Ongoing-Projects\\IMS\\IMS-BE\\IMS-BE.csproj",
+      "projectPath": "E:\\Freelance\\Origin360\\Origin360---Solutions\\Ongoing\\IMS\\IMS-BE\\IMS-BE.csproj",
       "packagesPath": "C:\\Users\\hp 15\\.nuget\\packages\\",
-      "outputPath": "E:\\Work\\8 Bits\\8 Bits Solutions\\Ongoing-Projects\\IMS\\IMS-BE\\obj\\",
+      "outputPath": "E:\\Freelance\\Origin360\\Origin360---Solutions\\Ongoing\\IMS\\IMS-BE\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

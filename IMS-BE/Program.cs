@@ -1,8 +1,11 @@
+using IMS_BE.Entities;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("local_FE_App", policyBuilder =>
+    options.AddPolicy("IMS_FE_Local", policyBuilder =>
     {
         policyBuilder.WithOrigins("http://localhost:5173")
             .AllowAnyHeader()
@@ -11,32 +14,16 @@ builder.Services.AddCors(options =>
     });
 });
 
-var app = builder.Build();
 
-app.UseCors("local_FE_App");
-
-app.MapGet("/", () => "Hello Rehman!");
-
-// POST Endpoint for Login
-app.MapPost("/login", async (HttpContext context) =>
+builder.Services.AddControllers();
+builder.Services.AddDbContext<AuthContext>(options =>
 {
-    var requestBody = await context.Request.ReadFromJsonAsync<LoginRequest>();
-
-    if (requestBody == null)
-    {
-        return Results.BadRequest("Invalid request data.");
-    }
-
-    // Logging for testing
-    Console.WriteLine($"Username: {requestBody.Username}, Password: {requestBody.Password}");
-
-    return Results.Ok(new { message = "Login request received", data = requestBody });
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlServer(connectionString);
 });
 
-app.Run();
+var app = builder.Build();
 
-public class LoginRequest
-{
-    public string Username { get; set; }
-    public string Password { get; set; }
-}
+app.UseCors("IMS_FE_Local");
+app.MapControllers();
+app.Run();

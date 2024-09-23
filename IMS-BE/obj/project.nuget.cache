@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gyDeRIHf688=",
+  "dgSpecHash": "vathsr3UlVI=",
   "success": true,
-  "projectFilePath": "E:\\Work\\8 Bits\\8 Bits Solutions\\Ongoing-Projects\\IMS\\IMS-BE\\IMS-BE.csproj",
+  "projectFilePath": "E:\\Freelance\\Origin360\\Origin360---Solutions\\Ongoing\\IMS\\IMS-BE\\IMS-BE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp 15\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\hp 15\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
