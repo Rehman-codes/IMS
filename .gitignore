@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# BE files to ignore 
+appsettings.Development.json
+
+# FE files to ignore

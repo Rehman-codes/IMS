@@ -1,5 +1,7 @@
 import './login.css';
 import { useState, useEffect } from 'react';
+import { API_URL } from '../../../../config';
+
 
 function Login() {
 
@@ -20,10 +22,10 @@ function Login() {
         e.preventDefault();
         console.log("Form submitted with", { username, password });
 
-        fetch('http://localhost:5035/api/auth/', {
+        fetch(`${API_URL}/auth/`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 Username: username,
@@ -38,19 +40,12 @@ function Login() {
             })
             .then(data => {
                 console.log('Success:', data);
+                const token = data.token;
+                localStorage.setItem('jwtToken', token);
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-
-
-            // fetch('http://localhost:5035/', {
-            //     method: 'GET',
-            // })
-            // .then(response => response.text())
-            // .then(data => console.log(data))
-            // .catch(error => console.error('Error:', error));
-            
     }
 
     return (
