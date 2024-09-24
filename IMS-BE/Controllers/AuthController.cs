@@ -2,6 +2,10 @@ using IMS_BE.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore; // Make sure to include this for EF methods
 using System.Linq; // For LINQ queries
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace IMS_BE.Controllers
 {
@@ -11,10 +15,12 @@ namespace IMS_BE.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AuthContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(AuthContext context)
+        public AuthController(AuthContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
 
@@ -34,21 +40,34 @@ namespace IMS_BE.Controllers
                 return Unauthorized(new { Message = "Invalid username or password" });
             }
 
-            // Successful login, return user information
-            return Ok(new
-            {
-                Message = "Login successful",
-                User = new
-                {
-                    user.UserId,
-                    user.UserName,
-                    user.Email,
-                    user.Role,
-                    user.ProfilePicPath
-                }
-            });
+            // Generate JWT token
+            var token = GenerateJwtToken(user);
+            return Ok(new { Token = token });
         }
 
+
+        private string GenerateJwtToken(User user)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
 
         public class LoginData
         {

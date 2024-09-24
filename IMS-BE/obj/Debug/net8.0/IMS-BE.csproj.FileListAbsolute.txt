@@ -262,3 +262,4 @@ E:\Freelance\Origin360\Origin360---Solutions\Ongoing\IMS\IMS-BE\obj\Debug\net8.0
 E:\Freelance\Origin360\Origin360---Solutions\Ongoing\IMS\IMS-BE\obj\Debug\net8.0\IMS-BE.pdb
 E:\Freelance\Origin360\Origin360---Solutions\Ongoing\IMS\IMS-BE\obj\Debug\net8.0\IMS-BE.genruntimeconfig.cache
 E:\Freelance\Origin360\Origin360---Solutions\Ongoing\IMS\IMS-BE\obj\Debug\net8.0\ref\IMS-BE.dll
+E:\Freelance\Origin360\Origin360---Solutions\Ongoing\IMS\IMS-BE\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
