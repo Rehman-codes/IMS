@@ -41,7 +41,7 @@ function Login() {
             .then(data => {
                 console.log('Success:', data);
                 const token = data.token;
-                localStorage.setItem('jwtToken', token);
+                localStorage.setItem('IMS_TOKEN', token);
             })
             .catch(error => {
                 console.error('Error:', error);
