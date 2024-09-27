@@ -13,3 +13,6 @@ namespace IMS_BE.Entities
     }
 
 }
+
+
+// dotnet ef migrations add <MigrationName> -----&&----- dotnet ef database update 

@@ -25,5 +25,6 @@ dist-ssr
 
 # BE files to ignore 
 appsettings.Development.json
+appsettings.json
 
 # FE files to ignore

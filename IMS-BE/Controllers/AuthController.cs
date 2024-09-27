@@ -1,7 +1,5 @@
 using IMS_BE.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Make sure to include this for EF methods
-using System.Linq; // For LINQ queries
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -25,30 +23,29 @@ namespace IMS_BE.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromBody] LoginData loginData)
+        public IActionResult PostLoginData([FromBody] LoginData loginData)
         {
-            Console.WriteLine("login post request handler was called!");
-            Console.WriteLine(loginData.Username);
-            Console.WriteLine(loginData.Password);
-
-            // Validate user credentials
-            var user = _context.Users
-                .FirstOrDefault(u => u.UserName == loginData.Username && u.Password == loginData.Password);
+            var user = _context.Users.FirstOrDefault(u => u.UserName == loginData.Username && u.Password == loginData.Password);
 
             if (user == null)
             {
                 return Unauthorized(new { Message = "Invalid username or password" });
             }
 
-            // Generate JWT token
             var token = GenerateJwtToken(user);
-            return Ok(new { Token = token });
+            return Ok(new { Token = token, Role = user.Role });
         }
 
 
         private string GenerateJwtToken(User user)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var jwtKey = _configuration["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new ArgumentNullException("Jwt:Key", "JWT Key is missing in the configuration.");
+            }
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
